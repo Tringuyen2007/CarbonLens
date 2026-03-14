@@ -27,6 +27,19 @@ coverage/
 **/.env.*
 !**/.env.example
 
+# Python artifacts
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+
+# Raw API fetch output (may be large; commit curated data/ files only)
+data/raw/
+
 # Editor metadata
 .vscode/
 .idea/

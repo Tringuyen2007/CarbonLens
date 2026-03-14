@@ -1,0 +1,598 @@
+[
+  {
+    "city_id": "nyc",
+    "name": "New York City",
+    "state": "NY",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "total_co2e_mt": 48200000,
+    "co2e_per_capita": 5.78,
+    "co2e_year": 2023,
+    "has_bps": true,
+    "trend_yoy": -2.3,
+    "population": 8336817,
+    "climate_zone": "4A",
+    "grid": { "region": "NYISO", "carbon_intensity": 230, "renewable_pct": 32.1 },
+    "bps": {
+      "name": "Local Law 97",
+      "status": "active",
+      "thresholds": [
+        { "period": "2024\u20132029", "type": "Office", "limit": 8.46, "unit": "kgCO\u2082e/sqft", "penalty": 268 },
+        { "period": "2030\u20132034", "type": "Office", "limit": 4.53, "unit": "kgCO\u2082e/sqft", "penalty": 268 }
+      ],
+      "compliance_gap_pct": 14
+    },
+    "renewables": {
+      "solar_ghi": 4.2,
+      "wind_avg": 5.8,
+      "rooftop_mw": 5800,
+      "incentives": [
+        { "name": "NY-Sun", "type": "upfront", "value": "$350/kW" },
+        { "name": "Con Ed Solar Credit", "type": "bill_credit", "value": "$0.04/kWh" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "boston",
+    "name": "Boston",
+    "state": "MA",
+    "lat": 42.3601,
+    "lng": -71.0589,
+    "total_co2e_mt": 6800000,
+    "co2e_per_capita": 9.8,
+    "co2e_year": 2023,
+    "has_bps": true,
+    "trend_yoy": -3.1,
+    "population": 694583,
+    "climate_zone": "5A",
+    "grid": { "region": "ISO-NE", "carbon_intensity": 185, "renewable_pct": 38.2 },
+    "bps": {
+      "name": "BERDO 2.0",
+      "status": "active",
+      "thresholds": [
+        { "period": "2025\u20132029", "type": "Office", "limit": 7.8, "unit": "kgCO\u2082e/sqft", "penalty": 234 },
+        { "period": "2030\u20132034", "type": "Office", "limit": 5.1, "unit": "kgCO\u2082e/sqft", "penalty": 234 }
+      ],
+      "compliance_gap_pct": 11
+    },
+    "renewables": {
+      "solar_ghi": 4.1,
+      "wind_avg": 6.2,
+      "rooftop_mw": 1200,
+      "incentives": [
+        { "name": "SMART Program", "type": "incentive_tariff", "value": "$0.15\u20130.30/kWh" },
+        { "name": "MA Clean Energy Rebate", "type": "upfront", "value": "$1,000/kW" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "dc",
+    "name": "Washington D.C.",
+    "state": "DC",
+    "lat": 38.9072,
+    "lng": -77.0369,
+    "total_co2e_mt": 5200000,
+    "co2e_per_capita": 7.3,
+    "co2e_year": 2023,
+    "has_bps": true,
+    "trend_yoy": -1.8,
+    "population": 712816,
+    "climate_zone": "4A",
+    "grid": { "region": "PJM", "carbon_intensity": 295, "renewable_pct": 21.4 },
+    "bps": {
+      "name": "BEPS",
+      "status": "active",
+      "thresholds": [
+        { "period": "2026\u20132027", "type": "Office (>50k sqft)", "limit": 6.2, "unit": "kgCO\u2082e/sqft", "penalty": 10 }
+      ],
+      "compliance_gap_pct": 9
+    },
+    "renewables": {
+      "solar_ghi": 4.5,
+      "wind_avg": 4.9,
+      "rooftop_mw": 870,
+      "incentives": [
+        { "name": "DC SEU Rebate", "type": "upfront", "value": "$200/kW" },
+        { "name": "Pepco Solar Credits", "type": "bill_credit", "value": "$0.05/kWh" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "denver",
+    "name": "Denver",
+    "state": "CO",
+    "lat": 39.7392,
+    "lng": -104.9903,
+    "total_co2e_mt": 8400000,
+    "co2e_per_capita": 11.2,
+    "co2e_year": 2023,
+    "has_bps": true,
+    "trend_yoy": -2.6,
+    "population": 749001,
+    "climate_zone": "5B",
+    "grid": { "region": "WECC", "carbon_intensity": 380, "renewable_pct": 28.7 },
+    "bps": {
+      "name": "Energize Denver",
+      "status": "active",
+      "thresholds": [
+        { "period": "2024\u20132026", "type": "Large (>25k sqft)", "limit": 12.4, "unit": "kgCO\u2082e/sqft", "penalty": 200 },
+        { "period": "2027\u20132030", "type": "Large (>25k sqft)", "limit": 9.1, "unit": "kgCO\u2082e/sqft", "penalty": 200 }
+      ],
+      "compliance_gap_pct": 18
+    },
+    "renewables": {
+      "solar_ghi": 5.5,
+      "wind_avg": 7.1,
+      "rooftop_mw": 3200,
+      "incentives": [
+        { "name": "Xcel Energy Solar*Rewards", "type": "performance", "value": "$0.05/kWh" },
+        { "name": "Colorado Reg. 28 Grant", "type": "grant", "value": "Up to $500k" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "seattle",
+    "name": "Seattle",
+    "state": "WA",
+    "lat": 47.6062,
+    "lng": -122.3321,
+    "total_co2e_mt": 7500000,
+    "co2e_per_capita": 3.5,
+    "co2e_year": 2023,
+    "has_bps": true,
+    "trend_yoy": -1.9,
+    "population": 749256,
+    "climate_zone": "4C",
+    "grid": { "region": "NW", "carbon_intensity": 80, "renewable_pct": 87.4 },
+    "bps": {
+      "name": "Seattle BEPS",
+      "status": "active",
+      "thresholds": [
+        { "period": "2031+", "type": "Office (>20k sqft)", "limit": 5.0, "unit": "kgCO\u2082e/sqft", "penalty": 10 }
+      ],
+      "compliance_gap_pct": 6
+    },
+    "renewables": {
+      "solar_ghi": 3.8,
+      "wind_avg": 5.3,
+      "rooftop_mw": 2100,
+      "incentives": [
+        { "name": "WA State Clean Energy Fund", "type": "grant", "value": "Varies" },
+        { "name": "PSE Solar Incentive", "type": "performance", "value": "$0.03/kWh" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "stlouis",
+    "name": "St. Louis",
+    "state": "MO",
+    "lat": 38.627,
+    "lng": -90.1994,
+    "total_co2e_mt": 3600000,
+    "co2e_per_capita": 11.6,
+    "co2e_year": 2023,
+    "has_bps": true,
+    "trend_yoy": -0.8,
+    "population": 310000,
+    "climate_zone": "4A",
+    "grid": { "region": "MISO", "carbon_intensity": 460, "renewable_pct": 12.3 },
+    "bps": {
+      "name": "St. Louis BPS Ordinance",
+      "status": "active",
+      "thresholds": [
+        { "period": "2025", "type": "Large Commercial", "limit": 10.0, "unit": "kgCO\u2082e/sqft", "penalty": 150 }
+      ],
+      "compliance_gap_pct": 21
+    },
+    "renewables": {
+      "solar_ghi": 4.8,
+      "wind_avg": 5.9,
+      "rooftop_mw": 580,
+      "incentives": [
+        { "name": "Ameren Missouri Solar Rebate", "type": "upfront", "value": "$250/kW" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "la",
+    "name": "Los Angeles",
+    "state": "CA",
+    "lat": 34.0522,
+    "lng": -118.2437,
+    "total_co2e_mt": 42000000,
+    "co2e_per_capita": 6.4,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -1.5,
+    "population": 3898747,
+    "climate_zone": "3B",
+    "grid": { "region": "CAISO", "carbon_intensity": 195, "renewable_pct": 41.3 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.7,
+      "wind_avg": 4.2,
+      "rooftop_mw": 18500,
+      "incentives": [
+        { "name": "LADWP Solar Incentive", "type": "performance", "value": "$0.05/kWh" },
+        { "name": "CA SGIP", "type": "rebate", "value": "$400/kWh (storage)" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "chicago",
+    "name": "Chicago",
+    "state": "IL",
+    "lat": 41.8781,
+    "lng": -87.6298,
+    "total_co2e_mt": 22500000,
+    "co2e_per_capita": 8.2,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -1.2,
+    "population": 2746388,
+    "climate_zone": "5A",
+    "grid": { "region": "PJM", "carbon_intensity": 340, "renewable_pct": 19.8 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 4.4,
+      "wind_avg": 8.9,
+      "rooftop_mw": 4100,
+      "incentives": [
+        { "name": "IL Solar for All", "type": "subsidy", "value": "Up to 110% of costs" },
+        { "name": "ComEd Net Metering", "type": "net_metering", "value": "Retail rate" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "houston",
+    "name": "Houston",
+    "state": "TX",
+    "lat": 29.7604,
+    "lng": -95.3698,
+    "total_co2e_mt": 86000000,
+    "co2e_per_capita": 28.6,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": 0.4,
+    "population": 2304580,
+    "climate_zone": "2A",
+    "grid": { "region": "ERCOT", "carbon_intensity": 430, "renewable_pct": 22.1 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.8,
+      "wind_avg": 6.4,
+      "rooftop_mw": 7200,
+      "incentives": [
+        { "name": "TX SECO Loan Program", "type": "loan", "value": "Up to $250k" },
+        { "name": "CenterPoint Net Metering", "type": "net_metering", "value": "Avoided cost" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "phoenix",
+    "name": "Phoenix",
+    "state": "AZ",
+    "lat": 33.4484,
+    "lng": -112.074,
+    "total_co2e_mt": 22500000,
+    "co2e_per_capita": 13.2,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": 0.9,
+    "population": 1608139,
+    "climate_zone": "2B",
+    "grid": { "region": "WECC", "carbon_intensity": 390, "renewable_pct": 17.6 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 6.5,
+      "wind_avg": 3.8,
+      "rooftop_mw": 9800,
+      "incentives": [
+        { "name": "APS Solar Energy Incentive", "type": "upfront", "value": "$100/kW" },
+        { "name": "AZ State Tax Credit", "type": "tax_credit", "value": "25% up to $1,000" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "sf",
+    "name": "San Francisco",
+    "state": "CA",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "total_co2e_mt": 4200000,
+    "co2e_per_capita": 4.8,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -2.8,
+    "population": 874961,
+    "climate_zone": "3C",
+    "grid": { "region": "CAISO", "carbon_intensity": 160, "renewable_pct": 52.3 },
+    "bps": {
+      "name": "BESO Ordinance",
+      "status": "benchmark",
+      "thresholds": [
+        { "period": "Ongoing", "type": "Commercial (>10k sqft)", "limit": null, "unit": "Benchmarking required", "penalty": 0 }
+      ],
+      "compliance_gap_pct": 0
+    },
+    "renewables": {
+      "solar_ghi": 5.1,
+      "wind_avg": 5.7,
+      "rooftop_mw": 3600,
+      "incentives": [
+        { "name": "GoSolarSF", "type": "grant", "value": "$500\u20132,000 per system" },
+        { "name": "CA NEM 3.0", "type": "net_metering", "value": "Avoided cost basis" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "austin",
+    "name": "Austin",
+    "state": "TX",
+    "lat": 30.2672,
+    "lng": -97.7431,
+    "total_co2e_mt": 11800000,
+    "co2e_per_capita": 10.8,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": 1.2,
+    "population": 961855,
+    "climate_zone": "2A",
+    "grid": { "region": "ERCOT", "carbon_intensity": 405, "renewable_pct": 25.4 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.6,
+      "wind_avg": 5.5,
+      "rooftop_mw": 5400,
+      "incentives": [
+        { "name": "Austin Energy Value of Solar", "type": "performance", "value": "$0.097/kWh" },
+        { "name": "AE Rebate", "type": "upfront", "value": "$2,500 flat" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "portland",
+    "name": "Portland",
+    "state": "OR",
+    "lat": 45.5051,
+    "lng": -122.675,
+    "total_co2e_mt": 5200000,
+    "co2e_per_capita": 7.9,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -2.1,
+    "population": 652503,
+    "climate_zone": "4C",
+    "grid": { "region": "NW", "carbon_intensity": 105, "renewable_pct": 82.1 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 3.9,
+      "wind_avg": 6.8,
+      "rooftop_mw": 1900,
+      "incentives": [
+        { "name": "OR Solar + Storage Rebate", "type": "upfront", "value": "$0.30/Watt" },
+        { "name": "Portland Clean Energy Fund", "type": "grant", "value": "Community projects" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "miami",
+    "name": "Miami",
+    "state": "FL",
+    "lat": 25.7617,
+    "lng": -80.1918,
+    "total_co2e_mt": 14500000,
+    "co2e_per_capita": 9.9,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": 0.3,
+    "population": 467963,
+    "climate_zone": "1A",
+    "grid": { "region": "FRCC", "carbon_intensity": 455, "renewable_pct": 7.8 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.6,
+      "wind_avg": 4.1,
+      "rooftop_mw": 3100,
+      "incentives": [
+        { "name": "FPL SolarNow", "type": "program", "value": "Community solar subscription" },
+        { "name": "FL Property Tax Exemption", "type": "tax_exemption", "value": "100% of added value" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "atlanta",
+    "name": "Atlanta",
+    "state": "GA",
+    "lat": 33.749,
+    "lng": -84.388,
+    "total_co2e_mt": 16200000,
+    "co2e_per_capita": 10.4,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -0.6,
+    "population": 498715,
+    "climate_zone": "3A",
+    "grid": { "region": "SERC", "carbon_intensity": 390, "renewable_pct": 13.2 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.2,
+      "wind_avg": 3.5,
+      "rooftop_mw": 2400,
+      "incentives": [
+        { "name": "GA Power Solar Buyback", "type": "buyback", "value": "$0.04/kWh" },
+        { "name": "ATL Clean Energy Fund", "type": "grant", "value": "Commercial projects" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "minneapolis",
+    "name": "Minneapolis",
+    "state": "MN",
+    "lat": 44.9778,
+    "lng": -93.265,
+    "total_co2e_mt": 4800000,
+    "co2e_per_capita": 10.9,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -1.4,
+    "population": 429606,
+    "climate_zone": "6A",
+    "grid": { "region": "MISO", "carbon_intensity": 310, "renewable_pct": 25.6 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 4.2,
+      "wind_avg": 9.4,
+      "rooftop_mw": 1600,
+      "incentives": [
+        { "name": "MN Made in Minnesota Solar Incentive", "type": "performance", "value": "$0.07\u20130.15/kWh" },
+        { "name": "Xcel Energy Rebate", "type": "upfront", "value": "$0.10/Watt" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "sandiego",
+    "name": "San Diego",
+    "state": "CA",
+    "lat": 32.7157,
+    "lng": -117.1611,
+    "total_co2e_mt": 9800000,
+    "co2e_per_capita": 7.1,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -2.5,
+    "population": 1386932,
+    "climate_zone": "3B",
+    "grid": { "region": "CAISO", "carbon_intensity": 175, "renewable_pct": 45.8 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.8,
+      "wind_avg": 4.4,
+      "rooftop_mw": 7600,
+      "incentives": [
+        { "name": "SDG&E SGIP", "type": "rebate", "value": "$400/kWh storage" },
+        { "name": "CA NEM 3.0", "type": "net_metering", "value": "Avoided cost basis" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "dallas",
+    "name": "Dallas",
+    "state": "TX",
+    "lat": 32.7767,
+    "lng": -96.797,
+    "total_co2e_mt": 24800000,
+    "co2e_per_capita": 18.5,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": 1.1,
+    "population": 1304379,
+    "climate_zone": "2A",
+    "grid": { "region": "ERCOT", "carbon_intensity": 425, "renewable_pct": 24.3 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 5.5,
+      "wind_avg": 6.2,
+      "rooftop_mw": 4800,
+      "incentives": [
+        { "name": "Oncor Net Metering", "type": "net_metering", "value": "Retail rate" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "detroit",
+    "name": "Detroit",
+    "state": "MI",
+    "lat": 42.3314,
+    "lng": -83.0458,
+    "total_co2e_mt": 8400000,
+    "co2e_per_capita": 12.4,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -0.9,
+    "population": 670031,
+    "climate_zone": "5A",
+    "grid": { "region": "MISO", "carbon_intensity": 415, "renewable_pct": 11.7 },
+    "bps": null,
+    "renewables": {
+      "solar_ghi": 4.0,
+      "wind_avg": 7.1,
+      "rooftop_mw": 1400,
+      "incentives": [
+        { "name": "DTE Energy Residential Rebate", "type": "upfront", "value": "$500 flat" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  },
+  {
+    "city_id": "philadelphia",
+    "name": "Philadelphia",
+    "state": "PA",
+    "lat": 39.9526,
+    "lng": -75.1652,
+    "total_co2e_mt": 15600000,
+    "co2e_per_capita": 9.7,
+    "co2e_year": 2023,
+    "has_bps": false,
+    "trend_yoy": -1.1,
+    "population": 1567442,
+    "climate_zone": "4A",
+    "grid": { "region": "PJM", "carbon_intensity": 280, "renewable_pct": 28.4 },
+    "bps": {
+      "name": "Philadelphia BPS (Expanding)",
+      "status": "benchmark",
+      "thresholds": [
+        { "period": "TBD", "type": "Large Commercial", "limit": null, "unit": "Benchmarking required", "penalty": 0 }
+      ],
+      "compliance_gap_pct": 0
+    },
+    "renewables": {
+      "solar_ghi": 4.3,
+      "wind_avg": 5.1,
+      "rooftop_mw": 2800,
+      "incentives": [
+        { "name": "PECO Solar Rebate", "type": "upfront", "value": "$0.05/Watt" },
+        { "name": "PA Sunshine Solar Rebate", "type": "upfront", "value": "Up to $2,500" }
+      ]
+    },
+    "data_sources": ["Climate TRACE 2024", "EPA GHGRP", "EIA API"],
+    "last_updated": "2026-03-01"
+  }
+]

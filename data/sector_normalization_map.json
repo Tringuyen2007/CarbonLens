@@ -1,0 +1,13 @@
+{
+  "_comment": "Maps Climate TRACE v7 sector slugs → CarbonLens display sector names (must match SECTOR_COLORS keys in colors.js)",
+  "buildings": "Buildings",
+  "agriculture": "Other",
+  "forestry-and-land-use": "Other",
+  "fossil-fuel-operations": "Industry",
+  "manufacturing": "Industry",
+  "mineral-extraction": "Industry",
+  "power": "Industry",
+  "transportation": "Transport",
+  "waste": "Waste",
+  "other-energy-use": "Other"
+}

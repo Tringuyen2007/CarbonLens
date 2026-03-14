@@ -3,12 +3,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useCityContext } from '@/context/CityContext';
 import { useCities } from '@/hooks/useCities';
 
 export function Header() {
   const { selectCity, openCompare } = useCityContext();
   const { cities } = useCities();
+  const navigate = useNavigate();
+
   const [searchQuery, setSearchQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
 
@@ -23,7 +26,18 @@ export function Header() {
     selectCity(city.city_id);
     setSearchQuery('');
     setShowResults(false);
+    // Always navigate to the map so the detail panel is visible
+    navigate('/');
   };
+
+  const navLinkClass = ({ isActive }) => `
+    text-xs font-medium px-3 py-1.5 rounded-lg
+    border transition-colors
+    ${isActive
+      ? 'text-white bg-blue-600/20 border-blue-500/50'
+      : 'text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border-slate-700 hover:border-slate-500'
+    }
+  `;
 
   return (
     <header className="bg-slate-900 border-b border-slate-700 h-14 px-6 flex items-center justify-between relative z-[1001]">
@@ -41,8 +55,14 @@ export function Header() {
         </span>
       </div>
 
+      {/* Nav tabs */}
+      <nav className="flex items-center gap-1.5 flex-shrink-0 mx-4">
+        <NavLink to="/"         end className={navLinkClass}>Analysis</NavLink>
+        <NavLink to="/rankings"     className={navLinkClass}>Rankings</NavLink>
+      </nav>
+
       {/* Search bar */}
-      <div className="relative flex-1 max-w-sm mx-6">
+      <div className="relative flex-1 max-w-sm mx-2">
         <input
           type="text"
           value={searchQuery}
@@ -82,7 +102,7 @@ export function Header() {
         )}
       </div>
 
-      {/* Nav buttons */}
+      {/* Compare + version */}
       <div className="flex items-center gap-2 flex-shrink-0">
         <button
           onClick={openCompare}

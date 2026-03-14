@@ -1,0 +1,23 @@
+{
+  "_comment": "Maps city_id → EPA eGRID subregion abbreviation. Used to look up carbon_intensity and renewable_pct from eGRID Excel data.",
+  "nyc":          "NYCW",
+  "boston":       "NEWE",
+  "dc":           "RFCE",
+  "denver":       "RMPA",
+  "seattle":      "NWPP",
+  "stlouis":      "MROW",
+  "la":           "CAMX",
+  "chicago":      "RFCW",
+  "houston":      "ERCT",
+  "phoenix":      "AZNM",
+  "sf":           "CAMX",
+  "austin":       "ERCT",
+  "portland":     "NWPP",
+  "miami":        "FRCC",
+  "atlanta":      "SRSO",
+  "minneapolis":  "MROW",
+  "sandiego":     "CAMX",
+  "dallas":       "ERCT",
+  "detroit":      "RFCW",
+  "philadelphia": "RFCE"
+}
