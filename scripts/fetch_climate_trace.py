@@ -20,7 +20,7 @@ Climate TRACE city IDs confirmed via manual API check (2024-03):
   seattle   → ghs-fua_6989
   sf        → ghs-fua_6981
   austin    → ghs-fua_5101
-  portland  → ghs-fua_6727
+  portland  → ghs-fua_7377   (updated 2026-03: was ghs-fua_6727 which now returns 400)
   miami     → ghs-fua_6197
   atlanta   → ghs-fua_5098
   stlouis   → ghs-fua_6859
@@ -58,7 +58,7 @@ CITY_IDS = {
     "seattle":      "ghs-fua_6989",
     "sf":           "ghs-fua_6981",
     "austin":       "ghs-fua_5101",
-    "portland":     "ghs-fua_6727",
+    "portland":     "ghs-fua_7377",
     "miami":        "ghs-fua_6197",
     "atlanta":      "ghs-fua_5098",
     "stlouis":      "ghs-fua_6859",
