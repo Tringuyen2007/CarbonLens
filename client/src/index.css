@@ -19,7 +19,7 @@ html, body, #root {
 }
 
 body {
-  background-color: #020617; /* slate-950 */
+  background-color: #0d1b2a; /* dark navy */
   color: #e2e8f0;            /* slate-200 */
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -37,7 +37,7 @@ body {
 
 /* Tile layer background matches dark theme */
 .leaflet-container {
-  background: #020617;
+  background: #0d1b2a;
 }
 
 /* Tooltip style */
@@ -61,7 +61,7 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #0d1b2a;
 }
 ::-webkit-scrollbar-thumb {
   background: #334155;

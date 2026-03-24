@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Header — Top navigation bar  —  PRD §11.1
+// Header — Responsive: logo + fluid search left, nav + actions right
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from 'react';
@@ -26,93 +26,124 @@ export function Header() {
     selectCity(city.city_id);
     setSearchQuery('');
     setShowResults(false);
-    // Always navigate to the map so the detail panel is visible
-    navigate('/');
+    navigate('/analysis');
   };
 
   const navLinkClass = ({ isActive }) => `
-    text-xs font-medium px-3 py-1.5 rounded-lg
-    border transition-colors
+    flex items-center gap-1.5
+    text-xs font-medium px-3 py-1.5 rounded-md
+    transition-colors duration-150 whitespace-nowrap
     ${isActive
-      ? 'text-white bg-blue-600/20 border-blue-500/50'
-      : 'text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border-slate-700 hover:border-slate-500'
+      ? 'text-emerald-300 bg-emerald-600/25 border border-emerald-500/30'
+      : 'text-slate-300 hover:text-white hover:bg-white/8 border border-transparent'
     }
   `;
 
   return (
-    <header className="bg-slate-900 border-b border-slate-700 h-14 px-6 flex items-center justify-between relative z-[1001]">
-      {/* Logo */}
-      <div className="flex items-center gap-3 flex-shrink-0">
-        <div className="flex items-center gap-1.5">
-          <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
-            C
+    <header className="
+      bg-[#1a3a2a] border-b border-white/8
+      h-14 px-3 sm:px-6
+      flex items-center gap-3
+      relative z-[1001] flex-shrink-0
+      min-w-0
+    ">
+
+      {/* ── Left: Logo + fluid search ────────────────────────────────── */}
+      {/*
+        flex-1 lets this section grow and fill available space.
+        max-w-sm caps it so the search doesn't sprawl on wide screens.
+        min-w-0 allows it to shrink below its natural content width.
+      */}
+      <div className="flex items-center gap-3 flex-1 min-w-0 max-w-sm">
+
+        {/* Logo — icon always visible, text hidden on xs */}
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="w-7 h-7 rounded-lg bg-emerald-600/30 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm flex-shrink-0">
+            🌿
           </div>
-          <span className="text-white font-bold text-base tracking-tight">CarbonLens</span>
-          <span className="text-blue-400 font-light text-base">AI</span>
+          <span className="text-white font-semibold text-sm tracking-tight whitespace-nowrap hidden sm:block">
+            CarbonLens AI
+          </span>
         </div>
-        <span className="text-slate-600 text-xs hidden sm:block">
-          US Cities Carbon Intelligence
-        </span>
+
+        {/* Search — fluid, min-width so it doesn't collapse entirely */}
+        <div className="relative flex-1 min-w-[80px]">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={e => { setSearchQuery(e.target.value); setShowResults(true); }}
+            onFocus={() => setShowResults(true)}
+            onBlur={() => setTimeout(() => setShowResults(false), 150)}
+            placeholder="Search cities…"
+            className="
+              w-full bg-white/5 text-white text-sm
+              rounded-full px-4 py-1.5
+              border border-white/10 focus:border-emerald-500/50 focus:outline-none
+              placeholder:text-slate-500
+              transition-colors
+            "
+            aria-label="Search cities"
+          />
+
+          {showResults && results.length > 0 && (
+            <div className="absolute top-full left-0 right-0 mt-1 bg-[#1a3a2a] border border-white/10 rounded-lg shadow-xl overflow-hidden z-10 min-w-[200px]">
+              {results.map(city => (
+                <button
+                  key={city.city_id}
+                  onMouseDown={() => handleSelect(city)}
+                  className="w-full text-left px-4 py-2 hover:bg-white/5 flex items-center justify-between gap-2"
+                >
+                  <span className="text-white text-sm truncate">{city.name}</span>
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span className="text-slate-500 text-xs">{city.state}</span>
+                    {city.has_bps && (
+                      <span className="text-amber-400 text-xs">⚖ BPS</span>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Nav tabs */}
-      <nav className="flex items-center gap-1.5 flex-shrink-0 mx-4">
-        <NavLink to="/"         end className={navLinkClass}>Analysis</NavLink>
-        <NavLink to="/rankings"     className={navLinkClass}>Rankings</NavLink>
-      </nav>
+      {/* ── Right: Nav + divider + Compare + version ─────────────────── */}
+      {/*
+        flex-shrink-0 keeps this group from being squeezed.
+        Nav text labels collapse to icon-only on small screens via hidden/inline classes.
+      */}
+      <div className="flex items-center gap-1 flex-shrink-0 ml-auto">
 
-      {/* Search bar */}
-      <div className="relative flex-1 max-w-sm mx-2">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={e => { setSearchQuery(e.target.value); setShowResults(true); }}
-          onFocus={() => setShowResults(true)}
-          onBlur={() => setTimeout(() => setShowResults(false), 150)}
-          placeholder="Search cities…"
-          className="
-            w-full bg-slate-800 text-white text-sm
-            rounded-full px-4 py-1.5
-            border border-slate-600 focus:border-blue-500 focus:outline-none
-            placeholder:text-slate-500
-            transition-colors
-          "
-          aria-label="Search cities"
-        />
+        {/* Sparkle — decorative, hidden at small widths */}
+        <span className="text-slate-500 text-sm mr-1 hidden lg:block">✦</span>
 
-        {/* Search results dropdown */}
-        {showResults && results.length > 0 && (
-          <div className="absolute top-full left-0 right-0 mt-1 bg-slate-800 border border-slate-600 rounded-lg shadow-xl overflow-hidden z-10">
-            {results.map(city => (
-              <button
-                key={city.city_id}
-                onMouseDown={() => handleSelect(city)}
-                className="w-full text-left px-4 py-2 hover:bg-slate-700 flex items-center justify-between"
-              >
-                <span className="text-white text-sm">{city.name}</span>
-                <div className="flex items-center gap-2">
-                  <span className="text-slate-500 text-xs">{city.state}</span>
-                  {city.has_bps && (
-                    <span className="text-amber-400 text-xs">⚖ BPS</span>
-                  )}
-                </div>
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
+        {/* Nav links — icon always visible, label text on md+ */}
+        <NavLink to="/" end className={navLinkClass}>
+          <span className="text-[10px] opacity-70">⊞</span>
+          <span className="hidden md:inline">Dashboard</span>
+        </NavLink>
+        <NavLink to="/analysis" className={navLinkClass}>
+          <span className="text-[10px] opacity-70">▲</span>
+          <span className="hidden md:inline">Analysis</span>
+        </NavLink>
+        <NavLink to="/rankings" className={navLinkClass}>
+          <span className="text-[10px] opacity-70">◎</span>
+          <span className="hidden md:inline">City Ranks</span>
+        </NavLink>
 
-      {/* Compare + version */}
-      <div className="flex items-center gap-2 flex-shrink-0">
+        {/* Divider */}
+        <div className="w-px h-4 bg-white/10 mx-1.5 flex-shrink-0" />
+
+        {/* Compare */}
         <button
           onClick={openCompare}
           className="
             text-slate-300 hover:text-white text-xs font-medium
-            bg-slate-800 hover:bg-slate-700
-            px-3 py-1.5 rounded-lg
-            border border-slate-700 hover:border-slate-500
+            bg-white/5 hover:bg-white/10
+            px-3 py-1.5 rounded-md
+            border border-white/10 hover:border-white/20
             transition-colors
-            flex items-center gap-1.5
+            flex items-center gap-1.5 flex-shrink-0 whitespace-nowrap
           "
           aria-label="Compare cities"
         >
@@ -120,7 +151,8 @@ export function Header() {
           <span className="hidden sm:inline">Compare</span>
         </button>
 
-        <div className="text-slate-700 text-xs hidden md:block px-2">
+        {/* Version — only on wide screens */}
+        <div className="text-slate-600 text-xs hidden lg:block pl-1.5">
           v3.1
         </div>
       </div>
