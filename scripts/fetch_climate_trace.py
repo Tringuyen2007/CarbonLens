@@ -86,8 +86,8 @@ SECTOR_NORMALIZATION = {
 
 def fetch_city(session: httpx.Client, city_id: str, trace_id: str) -> dict | None:
     """Fetch 2023 emissions for one city. Returns None on error."""
-    url = f"{BASE_URL}/city/emissions"
-    params = {"city_id": trace_id, "since": "2023-01-01", "to": "2024-01-01"}
+    url = f"{BASE_URL}/sources/emissions"
+    params = {"cityId": trace_id, "year": 2023}
     try:
         r = session.get(url, params=params, timeout=20)
         r.raise_for_status()
@@ -99,9 +99,14 @@ def fetch_city(session: httpx.Client, city_id: str, trace_id: str) -> dict | Non
 
 def normalize(raw: dict, city_id: str, trace_id: str) -> dict:
     """Convert raw API response to a normalized structure matching our schema."""
-    sectors_raw = raw.get("emissions", {}).get("sectors", {})
+    # New API: sectors is a dict with a 'summaries' list of {sector, gas, emissionsQuantity, percentage}
+    sector_summaries = raw.get("sectors", {}).get("summaries", [])
+    sectors_raw: dict[str, float] = {}
     sector_totals: dict[str, float] = {}
-    for trace_sector, value in sectors_raw.items():
+    for item in sector_summaries:
+        trace_sector = item.get("sector", "")
+        value = item.get("emissionsQuantity", 0)
+        sectors_raw[trace_sector] = value
         display = SECTOR_NORMALIZATION.get(trace_sector, "Other")
         sector_totals[display] = sector_totals.get(display, 0) + value
 
