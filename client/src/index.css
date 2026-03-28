@@ -27,12 +27,11 @@ body {
 
 /* ── Leaflet overrides ──────────────────────────────────────────────────── */
 
-/* Fix Leaflet z-index to stay below our header and panel */
-.leaflet-pane {
-  z-index: 1;
-}
-.leaflet-control-container {
-  z-index: 2;
+/* Isolate the entire Leaflet map into its own stacking context so it sits
+   below our header and panel, without corrupting Leaflet's internal pane
+   ordering (tile pane: 200, marker pane: 600, tooltip pane: 650, etc.). */
+.leaflet-container {
+  isolation: isolate;
 }
 
 /* Tile layer background matches dark theme */

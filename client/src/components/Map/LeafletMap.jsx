@@ -14,14 +14,6 @@ export function LeafletMap() {
   const { selectCity } = useCityContext();
   const { cities, loading, error } = useCities();
 
-  if (error) {
-    return (
-      <div className="flex items-center justify-center h-full bg-slate-900 text-red-400 text-sm">
-        Failed to load map data. Check your connection or API configuration.
-      </div>
-    );
-  }
-
   return (
     <div className="relative w-full h-full">
       {loading && (
@@ -29,6 +21,14 @@ export function LeafletMap() {
           <div className="flex flex-col items-center gap-3">
             <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
             <span className="text-slate-400 text-sm">Loading cities…</span>
+          </div>
+        </div>
+      )}
+
+      {error && (
+        <div className="absolute inset-x-0 top-3 z-10 flex justify-center pointer-events-none">
+          <div className="bg-slate-900/90 border border-red-800 text-red-400 text-xs px-4 py-2 rounded-lg shadow-lg">
+            Failed to load city data. Map tiles still available.
           </div>
         </div>
       )}
