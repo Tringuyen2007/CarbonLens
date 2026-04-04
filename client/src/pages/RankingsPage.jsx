@@ -3,6 +3,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState, useMemo } from 'react';
+import { Scale } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCities } from '@/hooks/useCities';
 import { useCityContext } from '@/context/CityContext';
@@ -324,7 +325,7 @@ export function RankingsPage() {
                       <div className="px-4 py-3.5 text-sm">
                         {city.has_bps ? (
                           <span className="inline-flex items-center gap-1 bg-amber-500/10 text-amber-400 text-xs font-medium px-2 py-0.5 rounded-full border border-amber-500/20">
-                            ⚖ BPS
+                            <Scale size={10} /> BPS
                           </span>
                         ) : (
                           <span className="text-slate-500 text-xs">—</span>

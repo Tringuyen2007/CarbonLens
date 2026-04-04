@@ -40,6 +40,10 @@ venv/
 # Raw API fetch output (may be large; commit curated data/ files only)
 data/raw/
 
+# ChromaDB local vector store (generated at runtime, not source)
+chroma_db/
+**/chroma_db/
+
 # Editor metadata
 .vscode/
 .idea/

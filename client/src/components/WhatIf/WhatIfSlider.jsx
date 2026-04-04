@@ -6,6 +6,7 @@
 import { useState, useMemo } from 'react';
 import { ImpactProjection } from './ImpactProjection';
 import { formatMW } from '@/lib/formatters';
+import { Sun } from 'lucide-react';
 
 /**
  * Simplified solar impact model — PRD §12.3
@@ -43,7 +44,7 @@ export function WhatIfSlider({ city }) {
     <div className="bg-slate-800/60 rounded-lg p-4 border border-slate-700/50 space-y-4">
       {/* Header */}
       <div className="flex items-center gap-2">
-        <span className="text-lg">☀️</span>
+        <Sun size={18} className="text-amber-400" />
         <span className="text-white font-semibold text-sm">What If Scenario</span>
       </div>
 

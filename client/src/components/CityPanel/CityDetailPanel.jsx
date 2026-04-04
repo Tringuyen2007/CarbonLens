@@ -8,11 +8,13 @@ import { useCity } from '@/hooks/useCity';
 import { EmissionsDonut } from './EmissionsDonut';
 import { TrendChart } from './TrendChart';
 import { BPSMeter } from './BPSMeter';
-import { RecsCards } from './RecsCards';
+import { RecsCards, AnalyzeButton } from './RecsCards';
 import { WhatIfSlider } from '@/components/WhatIf/WhatIfSlider';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { SourcePill } from '@/components/ui/SourcePill';
+import { useState, useEffect } from 'react';
 import { formatCO2e, formatPerCapita, formatTrendYoY, formatNumber, formatPct } from '@/lib/formatters';
+import { Map, Scale, X } from 'lucide-react';
 
 function PanelSection({ title, children }) {
   return (
@@ -38,8 +40,12 @@ function KeyMetric({ label, value, sub, accent }) {
 export function CityDetailPanel() {
   const { panelOpen, closePanel, selectedCityId } = useCityContext();
   const { city, loading, error } = useCity();
+  const [freshRecs, setFreshRecs] = useState(null);
 
   const trend = city ? formatTrendYoY(city.trend_yoy) : null;
+
+  // Reset fresh recs whenever the selected city changes
+  useEffect(() => { setFreshRecs(null); }, [selectedCityId]);
 
   return (
     <aside className="flex flex-col flex-1 overflow-hidden bg-[#111c2b]" aria-label="City detail panel">
@@ -56,7 +62,7 @@ export function CityDetailPanel() {
             className="text-slate-500 hover:text-white transition-colors ml-2 flex-shrink-0 p-1"
             aria-label="Close panel"
           >
-            ✕
+            <X size={14} />
           </button>
         )}
       </div>
@@ -67,7 +73,7 @@ export function CityDetailPanel() {
         {/* Empty state — no city selected */}
         {!panelOpen && (
           <div className="flex flex-col items-center justify-center py-24 px-6 text-center">
-            <div className="text-4xl mb-4">🗺</div>
+            <Map size={40} className="mb-4 text-slate-500" />
             <p className="text-slate-400 text-sm font-medium">Select a city on the map</p>
             <p className="text-slate-600 text-xs mt-1.5 leading-relaxed">
               Click any circle marker to explore emissions data, trends, and AI-powered sustainability recommendations
@@ -86,19 +92,26 @@ export function CityDetailPanel() {
                   <Skeleton className="h-3 w-24" />
                 </div>
               ) : (
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-white text-base font-bold">{city.name}</h3>
-                    <span className="text-slate-400 text-sm">{city.state}</span>
-                    {city.has_bps && (
-                      <span className="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-0.5 rounded-full">
-                        ⚖ BPS
-                      </span>
-                    )}
+                <div className="flex items-start justify-between gap-2 w-full">
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-white text-base font-bold">{city.name}</h3>
+                      <span className="text-slate-400 text-sm">{city.state}</span>
+                      {city.has_bps && (
+                        <span className="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-0.5 rounded-full">
+                          <Scale size={10} className="inline mr-0.5" /> BPS
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-slate-500 text-xs mt-0.5">
+                      Pop. {formatNumber(city.population)} · Climate Zone {city.climate_zone}
+                    </div>
                   </div>
-                  <div className="text-slate-500 text-xs mt-0.5">
-                    Pop. {formatNumber(city.population)} · Climate Zone {city.climate_zone}
-                  </div>
+                  <AnalyzeButton
+                    cityId={selectedCityId}
+                    cityName={city.name}
+                    onAnalyzed={setFreshRecs}
+                  />
                 </div>
               )}
             </div>
@@ -219,7 +232,7 @@ export function CityDetailPanel() {
               {/* AI Recommendations */}
               {selectedCityId && (
                 <PanelSection title="AI Sustainability Recommendations">
-                  <RecsCards cityId={selectedCityId} />
+                  <RecsCards cityId={selectedCityId} overrideRecs={freshRecs} />
                 </PanelSection>
               )}
 

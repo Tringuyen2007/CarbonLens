@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useCityContext } from '@/context/CityContext';
 import { useCities } from '@/hooks/useCities';
+import { Leaf, Sparkles, LayoutDashboard, BarChart2, Trophy, ArrowLeftRight, Scale } from 'lucide-react';
 
 export function Header() {
   const { selectCity, openCompare } = useCityContext();
@@ -58,8 +59,8 @@ export function Header() {
 
         {/* Logo — icon always visible, text hidden on xs */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <div className="w-7 h-7 rounded-lg bg-emerald-600/30 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm flex-shrink-0">
-            🌿
+          <div className="w-7 h-7 rounded-lg bg-emerald-600/30 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0">
+            <Leaf size={15} />
           </div>
           <span className="text-white font-semibold text-sm tracking-tight whitespace-nowrap hidden sm:block">
             CarbonLens AI
@@ -97,7 +98,7 @@ export function Header() {
                   <div className="flex items-center gap-2 flex-shrink-0">
                     <span className="text-slate-500 text-xs">{city.state}</span>
                     {city.has_bps && (
-                      <span className="text-amber-400 text-xs">⚖ BPS</span>
+                      <span className="text-amber-400 text-xs flex items-center gap-0.5"><Scale size={10} /> BPS</span>
                     )}
                   </div>
                 </button>
@@ -115,19 +116,19 @@ export function Header() {
       <div className="flex items-center gap-1 flex-shrink-0 ml-auto">
 
         {/* Sparkle — decorative, hidden at small widths */}
-        <span className="text-slate-500 text-sm mr-1 hidden lg:block">✦</span>
+        <Sparkles size={14} className="text-slate-500 mr-1 hidden lg:block" />
 
         {/* Nav links — icon always visible, label text on md+ */}
         <NavLink to="/" end className={navLinkClass}>
-          <span className="text-[10px] opacity-70">⊞</span>
+          <LayoutDashboard size={13} />
           <span className="hidden md:inline">Dashboard</span>
         </NavLink>
         <NavLink to="/analysis" className={navLinkClass}>
-          <span className="text-[10px] opacity-70">▲</span>
+          <BarChart2 size={13} />
           <span className="hidden md:inline">Analysis</span>
         </NavLink>
         <NavLink to="/rankings" className={navLinkClass}>
-          <span className="text-[10px] opacity-70">◎</span>
+          <Trophy size={13} />
           <span className="hidden md:inline">City Ranks</span>
         </NavLink>
 
@@ -147,7 +148,7 @@ export function Header() {
           "
           aria-label="Compare cities"
         >
-          <span>⇄</span>
+          <ArrowLeftRight size={13} />
           <span className="hidden sm:inline">Compare</span>
         </button>
 

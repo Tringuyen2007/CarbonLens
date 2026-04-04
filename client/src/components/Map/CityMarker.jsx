@@ -26,7 +26,7 @@ export function CityMarker({ city, onSelect }) {
         <div className="text-xs text-slate-300">{formatCO2e(city.total_co2e_mt)} total</div>
         <div className="text-xs text-slate-300">{city.co2e_per_capita} tCO₂e/capita</div>
         {city.has_bps && (
-          <div className="text-xs text-amber-400 mt-0.5">⚖ BPS Active</div>
+          <div className="text-xs text-amber-400 mt-0.5">BPS Active</div>
         )}
       </Tooltip>
     </CircleMarker>

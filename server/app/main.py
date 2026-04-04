@@ -11,6 +11,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.services import mongo
+from app.services.rag import build_index
 from app.routes import cities, emissions, ask, recommend, compare
 
 load_dotenv()
@@ -19,6 +20,14 @@ load_dotenv()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await mongo.connect()
+    try:
+        added = build_index()
+        if added:
+            print(f"[RAG] Indexed {added} new compliance documents into ChromaDB.")
+        else:
+            print("[RAG] ChromaDB index already up to date.")
+    except Exception as e:
+        print(f"[RAG] Skipping index build: {e}")
     yield
     await mongo.disconnect()
 

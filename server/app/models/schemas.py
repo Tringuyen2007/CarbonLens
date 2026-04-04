@@ -105,9 +105,15 @@ class EmissionsSummary(BaseModel):
 
 # ── /v1/ask ───────────────────────────────────────────────────────────────────
 
+class ChatMessage(BaseModel):
+    role: str       # "user" | "assistant"
+    content: str
+
+
 class AskRequest(BaseModel):
     query: str
     city_id: Optional[str] = None
+    history: Optional[list[ChatMessage]] = None
 
 
 class AskSource(BaseModel):

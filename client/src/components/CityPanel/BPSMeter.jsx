@@ -3,6 +3,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { Skeleton } from '@/components/ui/Skeleton';
+import { Scale } from 'lucide-react';
 
 function ComplianceBar({ gapPct }) {
   // gapPct = 0 means fully compliant, positive means % over limit
@@ -61,7 +62,7 @@ export function BPSMeter({ city, loading }) {
               : 'bg-slate-600/20 text-slate-400'
           }`}
         >
-          {bps.status === 'active' ? '⚖ ACTIVE' : bps.status?.toUpperCase()}
+          {bps.status === 'active' ? <><Scale size={10} className="inline mr-0.5" />ACTIVE</> : bps.status?.toUpperCase()}
         </span>
       </div>
 
