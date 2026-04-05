@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useCityContext } from '@/context/CityContext';
 import { useCities } from '@/hooks/useCities';
-import { Leaf, Sparkles, LayoutDashboard, BarChart2, Trophy, ArrowLeftRight, Scale } from 'lucide-react';
+import { Sparkles, LayoutDashboard, BarChart2, Trophy, ArrowLeftRight, Scale } from 'lucide-react';
 
 export function Header() {
   const { selectCity, openCompare } = useCityContext();
@@ -59,9 +59,7 @@ export function Header() {
 
         {/* Logo — icon always visible, text hidden on xs */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <div className="w-7 h-7 rounded-lg bg-emerald-600/30 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0">
-            <Leaf size={15} />
-          </div>
+          <img src="/logo.png" alt="CarbonLens logo" className="w-7 h-7 flex-shrink-0" />
           <span className="text-white font-semibold text-sm tracking-tight whitespace-nowrap hidden sm:block">
             CarbonLens AI
           </span>

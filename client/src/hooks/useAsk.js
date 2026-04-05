@@ -1,14 +1,32 @@
 // Hook for the AI Emission Analyst chat endpoint
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { askQuestion } from '@/lib/api';
 
 const MAX_HISTORY = 4; // matches backend MAX_HISTORY_TURNS
+const STORAGE_KEY = 'carbonlens_chat_messages';
+
+function loadMessages() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
+}
 
 export function useAsk() {
-  const [messages, setMessages] = useState([]);  // { role, content } pairs
+  const [messages, setMessages] = useState(() => loadMessages());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    } catch {
+      // storage quota exceeded — silently ignore
+    }
+  }, [messages]);
 
   // Keep last response for ChatResponse component compatibility
   const response = messages.length > 0
